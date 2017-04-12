@@ -5,7 +5,7 @@ namespace App\Controller\Traits;
 trait ToggleTrait
 {
 
-    public function setOutcomeMessages($modelClass)
+    public function setToggleoutcomeMessages($modelClass)
     {
         $this->toggleTraitMessages = [
             'enable' => [
@@ -20,7 +20,7 @@ trait ToggleTrait
         ];
     }
 
-    public function setModelClass()
+    public function setToggleModelClass()
     {
         $this->modelClass = explode(".", $this->modelClass);
         $this->modelClass = $this->modelClass[count($this->modelClass) - 1];
@@ -34,8 +34,8 @@ trait ToggleTrait
      */
     public function disable($id = null)
     {
-        $this->setModelClass();
-        $this->setOutcomeMessages($this->modelClass);
+        $this->setToggleModelClass();
+        $this->setToggleoutcomeMessages($this->modelClass);
 
         $this->request->allowMethod(['post', 'put', 'delete']);
         if (empty($id)) {
@@ -68,8 +68,8 @@ trait ToggleTrait
      */
     public function enable($id = null)
     {
-        $this->setModelClass();
-        $this->setOutcomeMessages($this->modelClass);
+        $this->setToggleModelClass();
+        $this->setToggleoutcomeMessages($this->modelClass);
         $this->request->allowMethod(['post', 'put', 'delete']);
         if (empty($id)) {
             throw new \Exception(__('Id required'));
